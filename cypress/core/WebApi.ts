@@ -9,7 +9,7 @@ export default class WebApi {
 
     cy.xpath(locator).click();
   }
-  clickToElement(locator) {
+  clickToElement(locator:string) {
     cy.get(locator).click();
   }
 }
