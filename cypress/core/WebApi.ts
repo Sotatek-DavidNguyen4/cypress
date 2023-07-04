@@ -2,7 +2,7 @@ export default class WebApi {
   openAnyUrl(url) {
     cy.visit(url);
   }
-  openPageTitle() {
+  getPageTitle() {
     return cy.title;
   }
   clickToElementByXpath(locator) {
