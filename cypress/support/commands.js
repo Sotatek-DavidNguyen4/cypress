@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('verifyElementDisplayed', (locator) => { 
+    cy.get(locator)
+    .should('be.visible');
+})
+
+Cypress.Commands.add('verifyElementNotDisplayed', (locator) => { 
+    cy.get(locator)
+    .should('not.be.visible');
+})
