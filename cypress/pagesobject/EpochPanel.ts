@@ -8,6 +8,7 @@ const pagingNavigator = "nav[aria-label]";
 const textboxInputPage = "nav[aria-label] input";
 const latestEpochNumber = "div[class='MuiBox-root css-h1m9wf']";
 const footer = "footer[data-testid]";
+const perPage = "//span[text()='Per page']/preceding-sibling::div/div";
 export default class EpochPanel extends WebApi{
   
   constructor(){
@@ -52,16 +53,18 @@ export default class EpochPanel extends WebApi{
   }
 
   verifyOrtherFieldIsTextLabel(){
-    for (let i = 0; i < 49; i++) {
-      cy.get(dataInEpochTable)
-        .eq(i)
-        .find('td>span')
-        .each(($element) => {
-          cy.wrap($element).should(($el) => {
-            expect($el.text().trim()).not.to.be.empty;
+    cy.xpath(perPage).invoke("text").then((page)=>{
+      for (let i = 0; i < parseInt(page)-1; i++) {
+        cy.get(dataInEpochTable)
+          .eq(i)
+          .find('td>span')
+          .each(($element) => {
+            cy.wrap($element).should(($el) => {
+              expect($el.text().trim()).not.to.be.empty;
+            });
           });
-        });
-    }
+      }
+    })
 
   return this;
   }
