@@ -1,5 +1,5 @@
 import WebApi from "../../core/WebApi";
-
+import {BlockConstants} from "../../fixtures/constants/BlockConstants"
 //locators
 const blockChainLocator = "//img[@alt='Blockchain']//parent::div";
 const blocksLocator = "//a[contains(@href,'/blocks')]";
@@ -24,13 +24,13 @@ export default class LoginPage extends WebApi {
     return this;
   }
   verifyColumnName() {
-    this.isElementVisibleByXpath(txtColumnName, "Block No");
-    this.isElementVisibleByXpath(txtColumnName, "Block ID");
-    this.isElementVisibleByXpath(txtColumnName, "Epoch/Slot");
-    this.isElementVisibleByXpath(txtColumnName, "Transactions");
-    this.isElementVisibleByXpath(txtColumnName, "Fees");
-    this.isElementVisibleByXpath(txtColumnName, "Output");
-    this.isElementVisibleByXpath(txtColumnName, "Created At");
+    this.isElementVisibleByXpath(txtColumnName, BlockConstants.COLUMN_NAME[0]);
+    this.isElementVisibleByXpath(txtColumnName, BlockConstants.COLUMN_NAME[1]);
+    this.isElementVisibleByXpath(txtColumnName, BlockConstants.COLUMN_NAME[2]);
+    this.isElementVisibleByXpath(txtColumnName, BlockConstants.COLUMN_NAME[3]);
+    this.isElementVisibleByXpath(txtColumnName, BlockConstants.COLUMN_NAME[4]);
+    this.isElementVisibleByXpath(txtColumnName, BlockConstants.COLUMN_NAME[5]);
+    this.isElementVisibleByXpath(txtColumnName, BlockConstants.COLUMN_NAME[6]);
     return this;
   }
   verifySortBtnEnable() {
