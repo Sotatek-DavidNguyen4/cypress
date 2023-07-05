@@ -7,13 +7,14 @@ const dataInEpochTable = "tr[class]";
 const pagingNavigator = "nav[aria-label]";
 const textboxInputPage = "nav[aria-label] input";
 const latestEpochNumber = "div[class='MuiBox-root css-h1m9wf']";
+const footer = "footer[data-testid]";
 export default class EpochPanel extends WebApi{
   
   constructor(){
     super();
   }
 
-  goToHomePage() {
+  goToHomePage() {  
     this.openAnyUrl("/")
     return this;
   }
@@ -28,11 +29,29 @@ export default class EpochPanel extends WebApi{
     return this;
   }
 
-  verifyEpochListDisplayed(){
-    //verify epoch number is hyperlink
-    this.verifyListElementAttribute(epochNumber,'href');
+  verifyPagingNavigatorDisplay(){
+    let totalRecord :number;
+    cy.get(latestEpochNumber)
+      .invoke('text')
+      .then((text) => {
+        totalRecord = parseInt(text) +1; 
+        if(totalRecord>10){
+          cy.get(footer).scrollIntoView();
+          cy.verifyElementDisplayed(pagingNavigator);
+        }else{
+          cy.verifyElementNotDisplayed(pagingNavigator);
+        }
+       });
 
-    //verrify block,Transaction Count,Rewards Distributed,Total Output,Start Timestamp,End Timestamp is text lable
+  return this;
+  }
+
+  verifyEpochNumberIsHyperLink(){
+    this.verifyListElementAttribute(epochNumber,'href');
+    return this;
+  }
+
+  verifyOrtherFieldIsTextLabel(){
     for (let i = 0; i < 49; i++) {
       cy.get(dataInEpochTable)
         .eq(i)
@@ -44,23 +63,11 @@ export default class EpochPanel extends WebApi{
         });
     }
 
-    //verify default input page is 1
-    this.verifyElementAttributeValue(textboxInputPage,'value','1')
-  
-    //verify paging navigator
-    let totalRecord :number;
-    cy.scrollTo('bottom');
-    cy.get(latestEpochNumber)
-      .invoke('text')
-      .then((text) => {
-        totalRecord = parseInt(text) +1; 
-        if(totalRecord>10){
-          cy.verifyElementDisplayed(pagingNavigator);
-        }else{
-          cy.verifyElementNotDisplayed(pagingNavigator);
-        }
-       });
-
   return this;
+  }
+
+  verifyDefaultInputPage(defaultPage:string){
+    this.verifyElementAttributeValue(textboxInputPage,'value',defaultPage)
+    return this;
   }
 }
