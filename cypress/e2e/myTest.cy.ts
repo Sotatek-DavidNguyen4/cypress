@@ -5,5 +5,5 @@ it("Full Checkout: Paid in advance", () => {
   loginPage
     .goToHomePage()
     .verifyPriceName()
-    .clickToPriceField();
+    .clickToPriceField(); 
 });
