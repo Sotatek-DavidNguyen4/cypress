@@ -1,4 +1,4 @@
-import EpochPanel from "../../pagesobject/EpochPanel";
+import EpochPanel from "../../../pagesobject/EpochPanel";
 
 const epochPanel = new EpochPanel();
 it.only("Check initalizing successfully when gridview have data",{"retries": 0}, () => {

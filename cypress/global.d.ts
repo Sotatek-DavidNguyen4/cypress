@@ -8,8 +8,18 @@ declare namespace Cypress {
 
 declare namespace Cypress {
   interface Chainable {
-    verifyElementDisplayed(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
-    verifyElementNotDisplayed(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
+    clickElement(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
+    verifyElementDisplay(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
+    verifyElementDisplayCssChainable(): Chainable<JQuery<HTMLElement>>;
+    verifyElementNotVisible(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
+    verifyElementNotExistXpath(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
+    verifyText(locator: string, expectedText:string): Chainable<JQuery<HTMLElement>>;
+    getTextContent(): Chainable<string>;
+    checkDateTimeFormat(): Chainable<JQuery<HTMLElement>>;
+    getAttributeValue(attName:string): Chainable<string>;
+    setAttributeValue(attName:string,attValue:string): Chainable<JQuery<HTMLElement>>;
+    verifyElementEnabled(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
+    setInputValue(inputValue: string, args?: any): Chainable<JQuery<HTMLElement>>;
   }
 }
 
