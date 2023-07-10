@@ -10,7 +10,9 @@
   "author": "giang",
   "license": "ISC",
   "dependencies": {
+    "@stdlib/string-format": "^0.0.3",
     "cypress": "^12.16.0",
+    "string-format": "^2.0.0",
     "typescript": "^5.1.6"
   },
   "devDependencies": {
