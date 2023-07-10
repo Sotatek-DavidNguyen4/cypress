@@ -43,6 +43,6 @@ export default class WebApi {
   
   isControlEnabledByXpath(locator, ...values) {
     let ele = format(locator, values);
-    cy.xpath(ele).should("be.disabled");
+    cy.xpath(ele).should("be.enabled");
   }
 }
