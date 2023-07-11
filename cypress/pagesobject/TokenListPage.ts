@@ -73,4 +73,24 @@ export default class TokenListPage extends WebApi{
         cy.xpath(btnSortCreated).should('not.have.attr', 'disabled');
         return this;
     }
+
+    verifySelectNumberItemPage(){
+        cy.xpath(selectNumberItemsPage).should('not.have.attr', 'disabled');
+        return this;
+    }
+
+    verifyTxbPageNumberEnterNumber(){
+        cy.xpath(txbPageNumber).should('have.attr', 'type', 'string');
+        return this;
+    }
+    checkNumberPage(){
+        cy.xpath(selectNumberItemsPage + '/div').invoke('text').then((text)=>{
+            const pageNumber = parseInt(text);
+            console.log("day là so number page:  "+pageNumber);
+            cy.get(listHyperLink).then((items)=>{
+                expect(items.length).to.be.at.most(pageNumber);
+            })
+        })
+        return this;
+    }
 }

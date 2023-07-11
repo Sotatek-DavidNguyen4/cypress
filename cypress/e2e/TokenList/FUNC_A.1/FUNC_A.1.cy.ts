@@ -2,13 +2,16 @@ import TokenListPage from "../../../pagesobject/TokenListPage";
 
 const tokenListPage = new TokenListPage();
 it("Full Checkout: Paid in advance", () => {
-  cy.viewport(1920,1080);
+    cy.viewport(1920,1080);
 
-  tokenListPage.goToHomePage();
+    tokenListPage.goToHomePage();
+    
+    tokenListPage .verifyButtonNextPage()
+                  .verifyButtonSortTotalTransaction()
+                  .verifyButtonSortTotalSuplly()
+                  .verifyButtonSortCreated()
+                  .verifySelectNumberItemPage()
+                  .verifyTxbPageNumberEnterNumber()
+                  .checkNumberPage();
   
-  tokenListPage
-  .verifyButtonNextPage()
-  .verifyButtonSortTotalTransaction()
-  .verifyButtonSortTotalSuplly()
-  .verifyButtonSortCreated();
 });
