@@ -52,6 +52,18 @@ Cypress.Commands.add("verifyElementDisplay", (locator, ...values) => {
     cy.get(ele).should("be.visible");
   }
 });
+Cypress.Commands.add("verifyAllElementDisplay", (locator, ...values) => {
+  let ele = format(locator, values);
+  if (ele.startsWith("/") || ele.startsWith("(")) {
+    cy.xpath(ele).each(e => {
+      cy.wrap(e).scrollIntoView().should("be.visible");
+    });
+  } else {
+    cy.xpath(ele).each(e => {
+      cy.wrap(e).scrollIntoView().should("be.visible");
+    });
+  }
+});
 
 Cypress.Commands.add(
   "verifyElementDisplayChainable",

@@ -10,6 +10,7 @@ declare namespace Cypress {
   interface Chainable {
     clickElement(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
     verifyElementDisplay(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
+    verifyAllElementDisplay(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
     verifyElementDisplayCssChainable(): Chainable<JQuery<HTMLElement>>;
     verifyElementNotVisible(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;
     verifyElementNotExistXpath(locator: string, args?: any): Chainable<JQuery<HTMLElement>>;

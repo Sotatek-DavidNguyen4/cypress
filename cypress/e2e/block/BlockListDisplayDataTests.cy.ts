@@ -7,7 +7,11 @@ describe("block list", () => {
         .verifyListBlockNoDisplay()
         .verifyListBlockHashDisplay()
         .verifyFormatBlockId()
-        .verifyEpochDisplay();
+        .verifyEpochDisplay()
+        .verifyTransactionDisplay()
+        .verifyFeeDisplay()
+        .verifyOutputDisplay()
+        .verifyQuickViewsDisplay();
     });
   });
   
