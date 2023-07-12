@@ -1,9 +1,7 @@
-import TokenListPage from "../../../pagesobject/TokenListPage";
+import TokenListPage from "../../pagesobject/TokenListPage";
 
 const tokenListPage = new TokenListPage();
-it("Full Checkout: Paid in advance", () => {
-    cy.viewport(1920,1080);
-
+it("Check initialization the screen", () => {
     tokenListPage.goToHomePage();
     
     tokenListPage .verifyButtonNextPage()
